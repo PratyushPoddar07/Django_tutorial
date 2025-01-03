@@ -10,21 +10,25 @@ def home(request):
         {'name': 'Deepanshu Chaurasiya', 'age': 16},
         {'name': 'Sandeep', 'age': 63},
     ]
-    vegetable = ['tomato', 'onion', 'potato']  # Example vegetable list
+#     vegetable = ['tomato', 'onion', 'potato']  # Example vegetable list
     
-    return render(request, "home/index.html", context={'page':'Django class','peoples': peoples, 'vegetable': vegetable})
+    return render(request, "home/index.html", context={'peoples': peoples})
 
 def about(request):
-    context = {'page':'About'}
+    # context = {'page':'About'}
 
-    return render(request,"home/about.html",context)
+    return render(request,"home/about.html")
 
 def contact(request):
-    context = {'page':'Contact'}
-    return render(request,"home/contact.html",context)
+    # context = {'page':'Contact'}
+    return render(request,"home/contact.html")
 
+# def success_page(request):
+#     print("*" * 10)
+#     context = {'page':'Contact'}
+
+    # return HttpResponse("<h1>Hey I am a Django server</h1> ")
+
+    # return render(request, "home/index.html")
 def success_page(request):
-    print("*" * 10)
-    context = {'page':'Contact'}
-
-    return HttpResponse("<h1> Hey this is a sucess page </h1> ")
+    return HttpResponse("<h1>Hey this a success page </h1>")

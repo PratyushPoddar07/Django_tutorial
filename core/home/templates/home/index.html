@@ -1,56 +1,40 @@
-{% extends "base.html" %}
-{% block start %}
-  <h1>This is index page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django Tutorial 2025</title>
+    <style>table, th, td {
+        border: 1px solid black;
+      }</style>
+</head>
+<body>
+    
+    <h1>This is Template is return by django tut</h1>
+    
+    <a href="/contact/">
+        Contact
+    </a>
+    |
+    <a href="/about">
+        About
+    </a>
 
-
-
-  <a href="/contact/">
-    Contact
-  </a>
-  <br>
-
-  <a href="/about/">
-    About
-  </a>
-
-   
-
-
-      <table class="container">
+    <table>
         <tr>
-          <th>S.No</th>
+          <th>S. No</th>
           <th>Name</th>
-          <th>Age</th>    
-          <th>Can Vote</th>    
+          <th>age</th>
         </tr>
         
         {% for people in peoples %}
         <tr>
           <td>{{forloop.counter}}</td>
           <td>{{people.name}}</td>
-          <td>{{people.age}}</td>   
-          <td {% if people.age < 18 %} style="background: red"{% endif %}>
-            {% if people.age >= 18 %}
-            👍
-            {% else %}
-            👎
-            {% endif %}
-          </td> 
+          <td>{{people.age}}</td>
         </tr>
-
-        {% endfor %}
         
-
-
+        {% endfor %}
       </table>
-
-
-      <p>
-       {% if "cucumber" in vegetable %}
-          yes,Available
-       {% else %}
-          not present
-       {% endif %}
-      </p>
-
-{% endblock %}
+</body>
+</html>
