@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block start%}
+
+<div class="container mt-5">
+
+    <form class="col-6 mx-auto card p-3 shadow-lg" >
+        <h2>Add Recipe</h2>
+        <hr>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+          <input type="text" class="form-control" >
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Recipe Description</label>
+          <textarea class="form-control"></textarea>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Recipe Image</label>
+          <input type="file" class="form-control" >
+        </div>
+        
+        <button type="submit" class="btn btn-success">Add Recipe</button>
+      </form>
+
+</div>
+
+{% endblock %}
