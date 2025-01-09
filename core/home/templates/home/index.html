@@ -1,40 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Django Tutorial 2025</title>
-    <style>table, th, td {
-        border: 1px solid black;
-      }</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pratyush Shop Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: linear-gradient(to bottom, #f9fafb, #e5e7eb);
+      color: #333;
+    }
+    header {
+      background: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      font-size: 1.5rem;
+      color: #4f46e5;
+    }
+    header a {
+      margin-left: 1rem;
+      color: #6b7280;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    header a:hover {
+      color: #4f46e5;
+    }
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #1f2937;
+    }
+    .hero p {
+      color: #6b7280;
+      font-size: 1.25rem;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .project {
+      background: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+    .project:hover {
+      transform: scale(1.05);
+    }
+    .project img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .project-content {
+      padding: 1rem;
+    }
+    .project-content h3 {
+      font-size: 1.25rem;
+      color: #1f2937;
+    }
+    .project-content p {
+      margin: 0.5rem 0;
+      color: #6b7280;
+    }
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .tech span {
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+    }
+    .project-link {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      background: white;
+      border-top: 1px solid #e5e7eb;
+      padding: 1rem;
+      text-align: center;
+      color: #6b7280;
+    }
+  </style>
 </head>
 <body>
-    
-    <h1>This is Template is return by django tut</h1>
-    
-    <a href="/contact/">
-        Contact
-    </a>
-    |
-    <a href="/about">
-        About
-    </a>
 
-    <table>
-        <tr>
-          <th>S. No</th>
-          <th>Name</th>
-          <th>age</th>
-        </tr>
-        
-        {% for people in peoples %}
-        <tr>
-          <td>{{forloop.counter}}</td>
-          <td>{{people.name}}</td>
-          <td>{{people.age}}</td>
-        </tr>
-        
-        {% endfor %}
-      </table>
+<header>
+  <h1>Pratyush Poddar Portfolio</h1>
+  <div>
+    <a href="https://github.com">GitHub</a>
+    <a href="#">Website</a>
+  </div>
+</header>
+
+<section class="hero">
+  <h2>Welcome to My Pratyush Shop</h2>
+  <p>Showcasing my collection of e-commerce projects and digital marketplaces</p>
+</section>
+
+<section class="projects" id="projects"></section>
+
+<footer>
+  <p>&copy; <span id="year"></span> Shop Portfolio. All rights reserved.</p>
+</footer>
+
+<script>
+  const projects = [
+    {
+      title: "VEGE Recipe",
+      description: "A secure and organized platform to store and access your favorite recipes anytime.",
+      image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?auto=format&fit=crop&q=80&w=800",
+      link: "http://127.0.0.1:8000/recipe/",
+      tech: ["React", "Node.js", "MongoDB"]
+    },
+    {
+      title: "Tech Haven",
+      description: "Premium electronics and gadgets store with the latest technology.",
+      image: "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&q=80&w=800",
+      link: "#",
+      tech: ["Next.js", "Stripe", "PostgreSQL"]
+    },
+    {
+      title: "Green Garden",
+      description: "Online plant shop with rare and exotic varieties.",
+      image: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&q=80&w=800",
+      link: "#",
+      tech: ["Vue.js", "Firebase", "Tailwind"]
+    }
+  ];
+
+  const projectContainer = document.getElementById("projects");
+
+  projects.forEach(project => {
+    const projectElement = document.createElement("div");
+    projectElement.classList.add("project");
+
+    projectElement.innerHTML = `
+      <img src="${project.image}" alt="${project.title}" />
+      <div class="project-content">
+        <h3>${project.title}</h3>
+        <p>${project.description}</p>
+        <div class="tech">
+          ${project.tech.map(tech => `<span>${tech}</span>`).join("")}
+        </div>
+        <a href="${project.link}" class="project-link">Visit Store</a>
+      </div>
+    `;
+
+    projectContainer.appendChild(projectElement);
+  });
+
+  // Update footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
