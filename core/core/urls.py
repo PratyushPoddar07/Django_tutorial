@@ -27,6 +27,9 @@ urlpatterns = [
     path('',home,name = "home"),
     path('recipe/',recipe,name = "recipe"),
     path('delete-recipe/<int:id>/',delete_recipe, name = "delete_recipe"),
+    path('update-recipe/<int:id>/',update_recipe, name = "update_recipe"),
+
+
     path('contact/',contact,name = "contact"),
     path('about/',about,name = "about"),
     
