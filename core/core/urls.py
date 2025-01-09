@@ -30,6 +30,9 @@ urlpatterns = [
     path('update-recipe/<int:id>/',update_recipe, name = "update_recipe"),
 
 
+    path('login/',login_page,name= "login_page"),
+    path('register/',register,name= "register"),
+
     path('contact/',contact,name = "contact"),
     path('about/',about,name = "about"),
     

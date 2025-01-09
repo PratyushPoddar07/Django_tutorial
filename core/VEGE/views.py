@@ -68,3 +68,11 @@ def delete_recipe(request,id):
     queryset.delete()
     # return HttpResponse("a")
     return redirect('/recipe/')
+
+# login page
+def login_page(request):
+    return render(request,'login.html')
+
+# register
+def register(request):
+    return render(request,'register.html')
