@@ -20,8 +20,18 @@ def recipe(request):
         return redirect('/recipe/')
     
     queryset = Recipe.objects.all()
+
+    # search -------
+    if request.GET.get('search'):
+        # print(request.GET.get('search'))
+        queryset = queryset.filter(recipe_name__icontains = request.GET.get('search'))
+    
+    # -------------
+
     context = {'recipe':queryset}
     return render(request,'recipe.html',context)
+
+
 
 
 def update_recipe(request,id):

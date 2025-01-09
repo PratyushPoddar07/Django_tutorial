@@ -5,6 +5,9 @@
 
     <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data" >
         {% csrf_token %}
+        
+        <!-- Add recipe / Create  -->
+
         <h2>Add Recipe</h2>
         <hr>
         <div class="mb-3">
@@ -23,9 +26,28 @@
         <button type="submit" class="btn btn-success">Add Recipe</button>
       </form>
 
-      <!-- {{recipe}} -->
+      <!-- Search bar -->
+      
+      <hr>
+      <div class="mt-5">
+        <div class="mx-auto col-6">
+          <form >
+            <div class="mb-3">
+              <label for="search bar" class="form-label">Search Food</label>
+              <input name="search"  type="text">
 
-      <table class="table table-hover">
+
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Search</button>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- {{recipe}} -->
+       <hr>
+
+      <table class="table table-hover mt-5">
         <thead>
           <tr>
             <th scope="col">#</th>
