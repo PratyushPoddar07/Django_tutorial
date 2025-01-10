@@ -3,7 +3,7 @@ from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-
+from django.contrib.auth import authenticate,login
 
 # Create your views here.
 def recipe(request):
@@ -75,6 +75,25 @@ def delete_recipe(request,id):
 
 # login page
 def login_page(request):
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        if not User.objects.filter(username = username).exists():
+            messages.error(request,'Invalid Username')
+            return redirect('/login/')
+
+        user = authenticate(username = username, password = password)
+
+        if user is None:
+            messages.error(request,'Invalid Password')
+            return redirect('/login/')
+
+        else:
+            login(request,user)
+            return redirect('/recipe/')
+
     return render(request,'login.html')
 
 # register
