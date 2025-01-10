@@ -3,7 +3,7 @@ from .models import *
 from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 def recipe(request):
@@ -72,6 +72,13 @@ def delete_recipe(request,id):
     queryset.delete()
     # return HttpResponse("a")
     return redirect('/recipe/')
+
+# logout
+def logout_page(request):
+    logout(request)
+    return redirect('/login/')
+
+
 
 # login page
 def login_page(request):

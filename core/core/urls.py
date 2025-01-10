@@ -32,6 +32,7 @@ urlpatterns = [
 
     path('login/',login_page,name= "login_page"),
     path('register/',register,name= "register"),
+    path('logout/',logout_page,name= "logout_page"),
 
     path('contact/',contact,name = "contact"),
     path('about/',about,name = "about"),
