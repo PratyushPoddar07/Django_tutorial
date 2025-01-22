@@ -3,6 +3,17 @@ import random
 from .models import *
 fake = Faker()
 
+def create_subjects(n=10):
+    try:
+        student_objs = Student.objects.all()
+        for student in student_objs:
+            subjects = Subject.objects.all()
+            for subject in subjects:
+                marks = random.randint(0,100)
+                SubjectMarks.objects.create(student = student, subject = subject, marks = marks)
+
+    except Exception as e:
+        print(e)
 
 def seed_db(n=10) ->None:
 
@@ -12,7 +23,7 @@ def seed_db(n=10) ->None:
 
             # [1,2,3,4]
             departments_objs = Department.objects.all()
-            random_index = random.randint(0,len(departments_objs))
+            random_index = random.randint(0,len(departments_objs)-1)
             student_id = f'STU-0{random.randint(100, 999)} '
             department  = departments_objs[random_index]
             student_name = fake.name()
