@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout
 from django.contrib.auth.decorators import login_required
+# pagination
+from django.core.paginator import Paginator
+
 
 @login_required(login_url="/login/")
 # Create your views here.
@@ -137,3 +140,18 @@ def register(request):
         return redirect('/register/')
 
     return render(request,'register.html')
+
+# lecture 19
+def get_students(request):
+
+    queryset = Student.objects.all()
+
+    if request.GET.get('search'):
+        search = request.GET.get('search')
+        queryset = queryset.filter(student_name__icontains = search)
+
+    paginator = Paginator(queryset, 25)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page",1)
+    page_obj = paginator.get_page(page_number)
+    return render(request,'report/student.html',{'queryset':page_obj})
