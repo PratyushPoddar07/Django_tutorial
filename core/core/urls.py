@@ -38,6 +38,7 @@ urlpatterns = [
     path('about/',about,name = "about"),
     # student report card
     path('students/',get_students,name = "get_students"),
+    path('see_marks/<student_id>',see_marks,name = "see_marks"),
     
     path('success-page/',success_page,name = "success_page"),
     path('admin/', admin.site.urls),

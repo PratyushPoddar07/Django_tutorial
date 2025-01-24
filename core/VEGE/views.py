@@ -164,3 +164,8 @@ def get_students(request):
     page_number = request.GET.get("page",1)
     page_obj = paginator.get_page(page_number)
     return render(request,'report/student.html',{'queryset':page_obj})
+
+
+def see_marks(request,student_id):
+    queryset = StudentMarks.objects.filter(student__student_id__student_id = student_id)
+    return render(request,'report/see_marks.html',{'queryset':queryset})
