@@ -142,13 +142,22 @@ def register(request):
     return render(request,'register.html')
 
 # lecture 19
+from django.db.models import Q
+
 def get_students(request):
 
     queryset = Student.objects.all()
 
     if request.GET.get('search'):
         search = request.GET.get('search')
-        queryset = queryset.filter(student_name__icontains = search)
+        queryset = queryset.filter(
+            Q(student_id__student_id__icontains = search) |
+            Q(student_name__icontains = search) |
+            Q(department__department__icontains = search) |
+            Q(student_email__icontains = search) |
+            Q(student_age__icontains = search) |
+            Q(student_address__icontains = search)
+        )
 
     paginator = Paginator(queryset, 25)  # Show 25 contacts per page.
 
